@@ -1,14 +1,15 @@
 
 export class ToDoInput {
-    constructor() {
+    constructor(toDoList) {
         this.input = document.getElementById("new-todo-title");
-        this.setEventListener();
+        this.setEventListener(toDoList);
     }
 
-    setEventListener() {
+    setEventListener({addItem, drawToDoList}) {
         this.input.addEventListener("keypress", (e) => {
             if (e.key == 'Enter') {
-              alert(this.input.value);
+              addItem(this.input.value);
+              drawToDoList();
               this.input.value = '';
             }
           });
